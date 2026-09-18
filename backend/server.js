@@ -1,0 +1,24 @@
+const express=require("express")
+const db=require("./config/db")
+const cors=require("cors")
+const app=express()
+const dotenv=require("dotenv")
+dotenv.config()
+const connectDb=require("./config/db")
+connectDb();
+app.use(express.json())
+app.use(cors({
+    origin:"http://localhost:5173",
+    credentials:true
+}))
+app.get("/",(req,res)=>{
+    res.send("hello")
+})
+app.use("/api/auth", require("./routes/authRoutes"));
+app.use("/api/products", require("./routes/productRoutes"));
+app.use("/api/orders", require("./routes/orderRoutes"));
+app.use("/api/analytics",require("./routes/analyticsRoute"))
+app.use("/api/contact", require("./routes/contactRoutes"));
+app.listen(process.env.PORT,(req,res)=>{
+    console.log("yes the server is working")
+})
