@@ -1,6 +1,5 @@
 import { useEffect, useState } from 'react'
 import { Link } from 'react-router-dom'
-import Button from './button'
 import Navbar from './Navbar'
 import Footer from './Footer'
 import Navbar2 from './Navbar2'

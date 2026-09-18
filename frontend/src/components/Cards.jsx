@@ -1,6 +1,5 @@
 import React from 'react'
-import Button from './button'
-
+import Button from './Button'
 const Cards = ({ img, heading, button }) => {
 
   return (
