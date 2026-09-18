@@ -28,9 +28,11 @@ import Register from './pages/Register.jsx'
 import AccountInfo from './components/AccountInfo.jsx'
 import PriceList from './priceList/PriceList.jsx'
 import Checkout from './pages/Checkout.jsx'
+import ScrollToTop from './ScrollToTop.jsx'
 
 createRoot(document.getElementById('root')).render(
         <BrowserRouter>
+  <ScrollToTop/>
  <ProductProvider>
    <SearchProvider>
     <AuthProvider>
