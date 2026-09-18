@@ -28,7 +28,7 @@ const Hero3 = () => {
         </p>
 
         <Link
-  to="/getAllProducts"
+  to="/search"
   className="bg-green-500 px-5 py-2 rounded cursor-pointer text-white active:scale-95 transition-all duration-150"
 >
   Shop Now
