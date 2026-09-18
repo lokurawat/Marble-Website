@@ -21,7 +21,9 @@ const PriceList = () => {
       try {
         setLoading(true);
 
-       const response = await fetch(`/api/products/category/${category}`);
+        const response = await fetch(
+          `${import.meta.env.VITE_API_URL}/api/products/category/${category}`
+        );
 
         const data = await response.json();
 
@@ -53,7 +55,6 @@ const PriceList = () => {
   return (
     <section className="w-full bg-gray-50 py-16 px-5">
 
-      {/* Heading */}
       <div className="max-w-6xl mx-auto text-center mb-10">
 
         <h2 className="text-3xl md:text-4xl font-bold text-gray-800">
@@ -67,12 +68,10 @@ const PriceList = () => {
 
       </div>
 
-      {/* Price Table */}
       <div className="max-w-6xl mx-auto overflow-x-auto bg-white rounded-xl shadow-md">
 
         <table className="w-full min-w-[700px] text-left">
 
-          {/* Table Header */}
           <thead className="bg-[#8B5E3C] text-white">
 
             <tr>
@@ -101,7 +100,6 @@ const PriceList = () => {
 
           </thead>
 
-          {/* Products */}
           <tbody>
 
             {products.length > 0 ? (
@@ -113,27 +111,22 @@ const PriceList = () => {
                   className="border-b hover:bg-gray-50 transition"
                 >
 
-                  {/* Product Name */}
                   <td className="px-6 py-5 font-semibold text-gray-800">
                     {product.name}
                   </td>
 
-                  {/* Origin */}
                   <td className="px-6 py-5 text-gray-600">
                     {product.origin}
                   </td>
 
-                  {/* Price */}
                   <td className="px-6 py-5 font-semibold text-[#8B5E3C]">
                     ₹{product.price}
                   </td>
 
-                  {/* Finish */}
                   <td className="px-6 py-5 text-gray-600">
                     {product.finish}
                   </td>
 
-                  {/* Action */}
                   <td className="px-6 py-5">
 
                     <button
@@ -177,7 +170,6 @@ const PriceList = () => {
 
       </div>
 
-      {/* Note */}
       <p className="max-w-6xl mx-auto mt-5 text-sm text-gray-500">
         * Prices may vary depending on quality, thickness, finish,
         size, and quantity.
