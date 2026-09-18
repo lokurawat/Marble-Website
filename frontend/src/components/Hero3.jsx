@@ -27,7 +27,12 @@ const Hero3 = () => {
 
         </p>
 
-         <Link to={"/getAllProducts"}>  <div className='bg-green-500 px-5 py-2 rounded cursor-pointer text-white active:scale-95 transition-all duration-150'>Shop Now</div>  </Link>
+        <Link
+  to="/getAllProducts"
+  className="bg-green-500 px-5 py-2 rounded cursor-pointer text-white active:scale-95 transition-all duration-150"
+>
+  Shop Now
+</Link>
 
       </div>
 
