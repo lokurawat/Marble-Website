@@ -7,7 +7,7 @@ export default defineConfig({
   plugins: [tailwindcss(),react()],
   server: {
     proxy: {
-      '/api': 'http://localhost:5000',
+      '/api': 'https://marble-website.onrender.com',
     },
   },
 })

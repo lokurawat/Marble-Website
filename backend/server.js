@@ -8,8 +8,8 @@ const connectDb=require("./config/db")
 connectDb();
 app.use(express.json())
 app.use(cors({
-    origin:"http://localhost:5173",
-    credentials:true
+    origin: process.env.FRONTEND_URL,
+    credentials: true
 }))
 app.get("/",(req,res)=>{
     res.send("hello")
