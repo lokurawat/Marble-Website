@@ -33,19 +33,16 @@ const Hero4 = () => {
         <Cards
           img={"/sanstone2.webp"}
           heading={"SandStone"}
-          button={"Add To Cart"}
         />
 
         <Cards
           img={"/granite2.jpg"}
           heading={"Granite"}
-          button={"Add To Cart"}
         />
 
         <Cards
           img={"https://www.rkmarblesindia.com/wp-content/uploads/2020/09/ambaji-white-3-600x480.jpg"}
           heading={"Indian Marble"}
-          button={"Add To Cart"}
         />
 
       </div>

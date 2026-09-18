@@ -1,6 +1,5 @@
 import React from 'react'
-import Button from './Button'
-const Cards = ({ img, heading, button }) => {
+const Cards = ({ img, heading}) => {
 
   return (
 
@@ -28,7 +27,6 @@ const Cards = ({ img, heading, button }) => {
 
       {/* BUTTON */}
 
-      <Button button={button} />
 
     </div>
 

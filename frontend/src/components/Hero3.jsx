@@ -1,6 +1,6 @@
 import React from 'react'
 import Button from './Button'
-
+import { Link } from 'react-router-dom'
 const Hero3 = () => {
 
   return (
@@ -28,7 +28,7 @@ const Hero3 = () => {
 
         </p>
 
-        <Button button={"Shop Now"} />
+         <Link to={"/getAllProducts"}><Button button={"Shop Now"} /></Link>
 
       </div>
 

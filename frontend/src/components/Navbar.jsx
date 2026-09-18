@@ -33,7 +33,7 @@ const Navbar = () => {
         </h1>
 
         <p className='text-sm sm:text-base lg:text-xl'>
-          Makrana
+          Kishangarh
         </p>
 
       </div>
