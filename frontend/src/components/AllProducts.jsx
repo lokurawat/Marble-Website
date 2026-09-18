@@ -3,7 +3,7 @@ import { Link } from 'react-router-dom'
 import Navbar from './Navbar'
 import Footer from './Footer'
 import Navbar2 from './Navbar2'
-
+import Button from './Button'
 const AllProducts = () => {
 
   const [loading, setLoading] = useState(true)
