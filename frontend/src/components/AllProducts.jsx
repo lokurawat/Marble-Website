@@ -21,8 +21,11 @@ const AllProducts = () => {
         const response = await fetch(
           `${import.meta.env.VITE_API_URL}/api/products`
         )
+     
 
-        const data = await response.json()
+const data = await response.json()
+
+console.log("PRODUCT DATA:", data)
 
         if (!response.ok) {
           throw new Error(data.message || 'Products could not be loaded.')

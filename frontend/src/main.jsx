@@ -30,11 +30,11 @@ import PriceList from './priceList/PriceList.jsx'
 import Checkout from './pages/Checkout.jsx'
 
 createRoot(document.getElementById('root')).render(
+        <BrowserRouter>
  <ProductProvider>
    <SearchProvider>
     <AuthProvider>
       <CartProvider>
-        <BrowserRouter>
 
         <Routes>
 
@@ -86,10 +86,10 @@ createRoot(document.getElementById('root')).render(
            <Route path="/checkout" element={<Checkout/>} />
           </Routes>
 
-        </BrowserRouter>
       </CartProvider>
     </AuthProvider>
   </SearchProvider>
  </ProductProvider>
+        </BrowserRouter>
 
 )
