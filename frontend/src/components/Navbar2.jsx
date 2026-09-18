@@ -32,7 +32,7 @@ const Navbar2 = () => {
 
        <DropDownButoon
           data={"Contact"}
-          url={"/contact"}
+          url={"/contactus"}
         />
 
       </div>
