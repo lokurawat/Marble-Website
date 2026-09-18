@@ -31,13 +31,13 @@ const Hero4 = () => {
       <div className='w-full flex flex-wrap justify-center items-center gap-5 mt-12 lg:mt-20'>
 
         <Cards
-          img={"https://www.rkmarblesindia.com/wp-content/uploads/2020/09/3-12-600x480.jpg"}
+          img={"/sanstone2.webp"}
           heading={"SandStone"}
           button={"Add To Cart"}
         />
 
         <Cards
-          img={"https://www.rkmarblesindia.com/wp-content/uploads/2020/09/white-marble-1-600x480.jpg"}
+          img={"/granite2.jpg"}
           heading={"Granite"}
           button={"Add To Cart"}
         />

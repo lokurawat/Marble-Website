@@ -31,25 +31,25 @@ const Hero2 = () => {
       <div className='w-full flex flex-wrap justify-center items-center gap-5 mt-12 lg:mt-20'>
 
         <Cards
-          img={"https://www.rkmarblesindia.com/wp-content/uploads/2022/11/White-Indian-Statuario-Marble-11.jpg"}
+          img={"/sandstone.jpg"}
           heading={"SandStone"}
           button={"View More"}
         />
 
         <Cards
-          img={"https://www.rkmarblesindia.com/wp-content/uploads/2024/02/black-granite-new-2024-photos-6.jpg"}
+          img={"/granite.jpg"}
           heading={"Granite"}
           button={"View More"}
         />
 
         <Cards
-          img={"https://www.rkmarblesindia.com/wp-content/uploads/2021/02/4-11.jpg"}
+          img={"/indian marble.jpg"}
           heading={"Indian Marble"}
           button={"View More"}
         />
 
         <Cards
-          img={"https://www.rkmarblesindia.com/wp-content/uploads/2021/01/1000-800-px-1.jpg"}
+          img={"/importedmarble.jpg"}
           heading={"Imported Marble"}
           button={"View More"}
         />
@@ -61,7 +61,7 @@ const Hero2 = () => {
         />
 
         <Cards
-          img={"https://www.rkmarblesindia.com/wp-content/uploads/2022/10/Fossil-Mint-Sandstone-8.jpg"}
+          img={"/marbletiles.png"}
           heading={"Marble Tiles"}
           button={"View More"}
         />

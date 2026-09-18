@@ -20,8 +20,8 @@ const Footer = () => {
 
           <p className='max-w-[400px] text-gray-700 leading-7 text-sm sm:text-base'>
 
-            R. K. Bye-Pass Road, Borawar,
-            Makrana 341502,
+            NEAR CITY SQUARE MALL, PANCHEEL,
+            AJMER 305001,
             Rajasthan, India
 
           </p>
@@ -38,7 +38,7 @@ const Footer = () => {
 
           <p className='text-gray-700 text-sm sm:text-base'>
 
-            +91-9928979999
+            +91-7878933846
 
           </p>
 
@@ -54,7 +54,7 @@ const Footer = () => {
 
           <p className='text-gray-700 text-sm sm:text-base break-all'>
 
-            info@rkmarblesindia.com
+             rawatlokesh960@gmail.com
 
           </p>
 
