@@ -1,30 +1,35 @@
-
 import React, { useState } from 'react'
 import { useNavigate } from 'react-router-dom'
 
 const Register = () => {
-    const navigate=useNavigate()
+
+    const navigate = useNavigate()
+
     const [name, setName] = useState('')
     const [email, setEmail] = useState('')
     const [password, setPassword] = useState('')
 
     const handleSubmit = async (e) => {
+
         e.preventDefault()
 
         try {
 
-            const response = await fetch('http://localhost:5000/api/auth/register', {
-                method: 'POST',
-                headers: {
-                    'Content-Type': 'application/json'
-                },
-                credentials: 'include',
-                body: JSON.stringify({
-                    name,
-                    email,
-                    password
-                })
-            })
+            const response = await fetch(
+                `${import.meta.env.VITE_API_URL}/api/auth/register`,
+                {
+                    method: 'POST',
+                    headers: {
+                        'Content-Type': 'application/json'
+                    },
+                    credentials: 'include',
+                    body: JSON.stringify({
+                        name,
+                        email,
+                        password
+                    })
+                }
+            )
 
             const data = await response.json()
 
@@ -37,15 +42,16 @@ const Register = () => {
 
             alert('Registration successful!')
 
-            
             setName('')
             setEmail('')
             setPassword('')
+
             navigate("/login")
 
         } catch (error) {
 
             console.log(error)
+
         }
     }
 
@@ -62,7 +68,8 @@ const Register = () => {
                     Register
                 </h1>
 
-                <input required={true}
+                <input
+                    required
                     type='text'
                     placeholder='Enter name'
                     value={name}
@@ -70,7 +77,8 @@ const Register = () => {
                     className='border p-3 rounded'
                 />
 
-                <input  required={true}
+                <input
+                    required
                     type='email'
                     placeholder='Enter email'
                     value={email}
@@ -78,7 +86,8 @@ const Register = () => {
                     className='border p-3 rounded'
                 />
 
-                <input required={true}
+                <input
+                    required
                     type='password'
                     placeholder='Enter password'
                     value={password}
@@ -96,6 +105,7 @@ const Register = () => {
             </form>
 
         </div>
+
     )
 }
 

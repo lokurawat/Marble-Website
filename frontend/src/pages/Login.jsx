@@ -1,10 +1,10 @@
-
 import React, { useContext, useState } from 'react'
 import { AuthContext } from '../context/auth-context'
 import { Link, useNavigate } from 'react-router-dom'
 
 const Login = () => {
-     const navigate=useNavigate()
+
+    const navigate = useNavigate()
     const { login } = useContext(AuthContext)
 
     const [email, setEmail] = useState('')
@@ -16,36 +16,42 @@ const Login = () => {
 
         try {
 
-            const response = await fetch('/api/auth/login', {
-                method: 'POST',
-                headers: {
-                    'Content-Type': 'application/json'
-                },
-                credentials: 'include',
-                body: JSON.stringify({
-                    email,
-                    password
-                })
-            })
+            const response = await fetch(
+                `${import.meta.env.VITE_API_URL}/api/auth/login`,
+                {
+                    method: 'POST',
+                    headers: {
+                        'Content-Type': 'application/json'
+                    },
+                    credentials: 'include',
+                    body: JSON.stringify({
+                        email,
+                        password
+                    })
+                }
+            )
 
             const data = await response.json()
 
             if (!response.ok) {
                 alert(data.message)
-            setEmail('')
-            setPassword('')
+                setEmail('')
+                setPassword('')
                 return
             }
 
             login(data)
+
             setEmail('')
             setPassword('')
-            
+
             console.log('Login successful', data)
-            if(data.role==="admin"){
-                navigate("/admin") }
-                else {
-                    navigate("/cart")}
+
+            if (data.role === "admin") {
+                navigate("/admin")
+            } else {
+                navigate("/cart")
+            }
 
         } catch (error) {
 
@@ -91,10 +97,13 @@ const Login = () => {
                 </button>
 
             </form>
+
             <div>
-             <Link to={"/register"}>
-             <div>register</div>
-             </Link>
+
+                <Link to={"/register"}>
+                    <div>register</div>
+                </Link>
+
             </div>
 
         </div>
