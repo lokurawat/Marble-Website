@@ -46,9 +46,9 @@ const Admin = () => {
       const [productsData, usersData, ordersData] = await Promise.all([
         fetch(`${API_URL}/api/products`).then(readResponse),
 
-        fetch(`${API_URL}/api/users`, {
-          headers: authHeaders,
-        }).then(readResponse),
+        fetch(`${API_URL}/api/auth/user`, {
+  headers: authHeaders,
+}).then(readResponse),
 
         fetch(`${API_URL}/api/orders`, {
           headers: authHeaders,

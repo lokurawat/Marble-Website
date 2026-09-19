@@ -8,8 +8,8 @@ const {getProducts,getProductsById,createProduct,deleteProduct,getProductsByCate
 router.route("/")
   .get(getProducts)
   .post(protect,admin,upload.single("image"), createProduct);
-router.route("/:id").get(getProductsById).put(protect,admin,upload.single('image'),updateProduct).delete(protect,admin,deleteProduct);
 router.get("/category/:category", getProductsByCategory);
+router.route("/:id").get(getProductsById).put(protect,admin,upload.single('image'),updateProduct).delete(protect,admin,deleteProduct);
 module.exports=router;
 
   
