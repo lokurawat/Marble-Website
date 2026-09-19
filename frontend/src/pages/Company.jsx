@@ -1,7 +1,7 @@
 import React from 'react'
 import Navbar from '../components/Navbar'
 import Navbar2 from '../components/Navbar2'
-import myImage from "../assets/IMG_5693.PNG"
+import myImage from "../assets/rajveerji.jpg"
 import Footer from "../components/Footer"
 
 const Company = () => {

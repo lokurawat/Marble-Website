@@ -33,7 +33,7 @@ const History = () => {
       <HistoryHero
         heading={"EARLY 1980'S - ACHIEVING AN INTERNATIONAL STANDARD IN ITALIAN MARBLE PROCESSING"}
 
-        img={"https://images.pexels.com/photos/14225905/pexels-photo-14225905.jpeg"}
+        img={"/historyimage1.avif"}
 
         paragraph={
           "In the early 1980's Elegant set up its Mt. Abu, Rajasthan factory to manufacture marble tiles. The founders vision to bring an international standard of architectural materials led to the introduction of Italian machinery and world-class marble processing in India."
@@ -45,7 +45,7 @@ const History = () => {
 
         heading={"EXPANDING PREMIUM MARBLE COLLECTIONS ACROSS INDIA"}
 
-        img={"https://www.jsbitalianmarble.com/wp-content/uploads/2025/12/Marble-Dealers-in-Kishangarh-Rajasthan.png"}
+        img={"/historyimage2.webp"}
 
         paragraph={
           "Balaji Marble India continued expanding its premium natural stone collection while maintaining high standards in quality, finishing, and customer trust across residential and commercial projects."
@@ -56,7 +56,7 @@ const History = () => {
 
         heading={"ADVANCED STONE PROCESSING AND MODERN INFRASTRUCTURE"}
 
-        img={"https://www.pedrini.it/media/ct2pdsbx/1_dji_0576_web.jpg"}
+        img={"/historyimage3.webp"}
 
         paragraph={
           "With modern machinery and experienced craftsmanship, the company improved production quality and introduced elegant marble finishes suitable for luxury interiors and architecture."
@@ -68,7 +68,7 @@ const History = () => {
 
         heading={"BECOMING A TRUSTED NAME IN NATURAL STONES"}
 
-        img={"https://marblecity.in/marblecity/showroom/17.jpg"}
+        img={"/historyimage4.jpg"}
 
         paragraph={
           "Through dedication, innovation, and customer satisfaction, Balaji Marble India established itself as a trusted marble supplier known for premium quality and timeless stone collections."
