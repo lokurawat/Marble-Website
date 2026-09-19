@@ -6,7 +6,7 @@ const Hero1 = () => {
   return (
 
     <div
-      className="w-full min-h-screen flex items-center bg-[url('/indianimage.png')] bg-cover bg-center px-5 sm:px-10 lg:px-35"
+      className="w-full min-h-screen flex items-center bg-[url('/indianimage.webp')] bg-cover bg-center px-5 sm:px-10 lg:px-35"
     >
 
       <div className='max-w-[800px]'>
