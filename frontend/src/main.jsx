@@ -39,7 +39,7 @@ createRoot(document.getElementById('root')).render(
       <CartProvider>
 
         <Routes>
-
+           <Route path="/" element={<App />} />
             <Route path="/index.html" element={<App />} />
             <Route
               path='/company'
