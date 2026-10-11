@@ -40,7 +40,7 @@ createRoot(document.getElementById('root')).render(
 
         <Routes>
            <Route path="/" element={<App />} />
-            <Route path="/index.html" element={<App />} />
+           
             <Route
               path='/company'
               element={<Company />}
