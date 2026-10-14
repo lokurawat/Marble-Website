@@ -1,8 +1,27 @@
-import React, { useContext, useState } from "react";
+import { useContext, useState } from "react";
+import { Link } from "react-router-dom";
 import { CartContext } from "../context/CartContext";
 
+const API_URL = import.meta.env.VITE_API_URL;
+
+const loadRazorpay = () => new Promise((resolve, reject) => {
+    if (window.Razorpay) {
+        resolve();
+        return;
+    }
+
+    const script = document.createElement("script");
+    script.src = "https://checkout.razorpay.com/v1/checkout.js";
+    script.onload = () => resolve();
+    script.onerror = () => reject(new Error("Unable to load Razorpay checkout."));
+    document.body.appendChild(script);
+});
+
 const Checkout = () => {
-    const { cart } = useContext(CartContext);
+    const { cart, setCart } = useContext(CartContext);
+    const [isProcessing, setIsProcessing] = useState(false);
+    const [error, setError] = useState("");
+    const [payment, setPayment] = useState(null);
 
     const [formData, setFormData] = useState({
         name: "",
@@ -25,15 +44,105 @@ const Checkout = () => {
         return sum + item.price * item.quantity;
     }, 0);
 
-    const handlePayment = (e) => {
+    const readResponse = async (response) => {
+        const data = await response.json();
+        if (!response.ok) {
+            throw new Error(data.message || "Payment request failed.");
+        }
+        return data;
+    };
+
+    const handlePayment = async (e) => {
         e.preventDefault();
 
-        console.log("Customer:", formData);
-        console.log("Cart:", cart);
-        console.log("Total:", total);
+        setError("");
+        setIsProcessing(true);
 
-        // Payment gateway will be added here
+        try {
+            await loadRazorpay();
+            const order = await fetch(`${API_URL}/api/payments/order`, {
+                method: "POST",
+                headers: { "Content-Type": "application/json" },
+                body: JSON.stringify({
+                    items: cart.map((item) => ({
+                        productId: item._id,
+                        quantity: item.quantity
+                    })),
+                    customer: formData
+                })
+            }).then(readResponse);
+
+            const checkout = new window.Razorpay({
+                key: order.keyId,
+                amount: order.amount,
+                currency: order.currency,
+                name: "Balaji Marble India",
+                description: "Marble order payment",
+                order_id: order.id,
+                prefill: {
+                    name: formData.name,
+                    email: formData.email,
+                    contact: formData.phone
+                },
+                theme: { color: "#8B5E3C" },
+                modal: {
+                    ondismiss: () => setIsProcessing(false)
+                },
+                handler: async (response) => {
+                    try {
+                        const verification = await fetch(`${API_URL}/api/payments/verify`, {
+                            method: "POST",
+                            headers: { "Content-Type": "application/json" },
+                            body: JSON.stringify(response)
+                        }).then(readResponse);
+
+                        setPayment({
+                            paymentId: response.razorpay_payment_id,
+                            orderId: verification.orderId
+                        });
+                        setCart([]);
+                    } catch (verificationError) {
+                        setError(verificationError.message);
+                    } finally {
+                        setIsProcessing(false);
+                    }
+                }
+            });
+
+            checkout.on("payment.failed", (response) => {
+                setError(response.error?.description || "Payment failed. Please try again.");
+                setIsProcessing(false);
+            });
+            checkout.open();
+        } catch (paymentError) {
+            setError(paymentError.message);
+            setIsProcessing(false);
+        }
+
     };
+
+    if (payment) {
+        return (
+            <div className="min-h-screen bg-gray-100 flex items-center justify-center px-5">
+                <div className="max-w-lg w-full bg-white rounded-xl shadow-md p-8 text-center">
+                    <h1 className="text-2xl font-bold text-green-700">Payment successful</h1>
+                    <p className="mt-3 text-gray-600">Your payment has been verified.</p>
+                    <p className="mt-4 text-sm text-gray-500 break-all">
+                        Payment ID: {payment.paymentId}
+                    </p>
+                    <p className="mt-2 text-sm text-gray-500 break-all">
+                        Order ID: {payment.orderId}
+                    </p>
+                    <Link
+                        to="/"
+                        className="inline-block mt-6 bg-[#8B5E3C] text-white px-6 py-3 rounded-lg font-semibold hover:bg-[#70482f] transition"
+                    >
+                        Continue shopping
+                    </Link>
+                </div>
+            </div>
+        );
+    }
 
     if (cart.length === 0) {
         return (
@@ -190,10 +299,16 @@ const Checkout = () => {
 
                             <button
                                 type="submit"
-                                className="w-full bg-[#8B5E3C] text-white py-3 rounded-lg font-semibold hover:bg-[#70482f] transition"
+                                disabled={isProcessing}
+                                className="w-full bg-[#8B5E3C] text-white py-3 rounded-lg font-semibold hover:bg-[#70482f] transition disabled:opacity-60 disabled:cursor-not-allowed"
                             >
-                                Proceed to Payment
+                                {isProcessing ? "Processing..." : "Pay with Razorpay"}
                             </button>
+                            {error && (
+                                <p role="alert" className="text-sm text-red-600">
+                                    {error}
+                                </p>
+                            )}
 
                         </form>
                     </div>
@@ -209,7 +324,7 @@ const Checkout = () => {
 
                             {cart.map((item) => (
                                 <div
-                                    key={item.id}
+                                    key={item._id}
                                     className="flex justify-between gap-4 border-b pb-4"
                                 >
                                     <div>

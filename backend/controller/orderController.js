@@ -39,7 +39,10 @@ const addOrderItems = async (req, res) => {
 
 const getMyOrders = async (req, res) => {
   try {
-    const orders = await Order.find({ userId: req.user._id });
+    const orders = await Order.find({
+      userId: req.user._id,
+      paymentStatus: { $ne: 'Pending' },
+    });
     res.json(orders);
   } catch (error) {
     res.status(500).json({ message: error.message });
@@ -48,7 +51,9 @@ const getMyOrders = async (req, res) => {
 
 const getOrders = async (req, res) => {
   try {
-    const orders = await Order.find({}).populate('userId', 'id name');
+    const orders = await Order.find({
+      paymentStatus: { $ne: 'Pending' },
+    }).populate('userId', 'id name');
     res.json(orders);
   } catch (error) {
     res.status(500).json({ message: error.message });

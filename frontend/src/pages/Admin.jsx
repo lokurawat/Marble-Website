@@ -465,7 +465,12 @@ const Admin = () => {
                     </td>
 
                     <td className='p-3'>
-                      {order.userId?.name || 'Unknown'}
+                      {order.userId?.name || order.address?.fullName || 'Unknown'}
+                      {order.customerEmail && (
+                        <p className='text-xs text-gray-500'>
+                          {order.customerEmail}
+                        </p>
+                      )}
                     </td>
 
                     <td className='p-3'>
@@ -491,6 +496,11 @@ const Admin = () => {
                         <option>Shipped</option>
                         <option>Delivered</option>
                       </select>
+                      {order.paymentStatus && (
+                        <p className='mt-1 text-xs text-gray-500'>
+                          Payment: {order.paymentStatus}
+                        </p>
+                      )}
                     </td>
                   </tr>
                 ))}

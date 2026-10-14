@@ -4,12 +4,12 @@ const User = require('../model/user-model')
 
 const getAdminStats = async (req, res) => {
   try {
-    const totalOrders = await Order.countDocuments({});
+    const completedOrders = await Order.find({ paymentStatus: { $ne: 'Pending' } });
+    const totalOrders = completedOrders.length;
     const totalProducts = await Product.countDocuments({});
     const totalUsers = await User.countDocuments({ role: 'user' });
 
-    const orders = await Order.find({});
-    const totalRevenue = orders.reduce((acc, item) => acc + item.totalAmount, 0);
+    const totalRevenue = completedOrders.reduce((acc, item) => acc + item.totalAmount, 0);
 
     res.json({ totalOrders, totalProducts, totalUsers, totalRevenue });
   } catch (error) {
